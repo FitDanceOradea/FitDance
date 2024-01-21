@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from 'next/server';
+// import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextResponse,NextRequest } from 'next/server';
  
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: NextRequest,) {
     // Extract data from the request body
      const body = await req.body
      console.log(body);
