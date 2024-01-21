@@ -65,10 +65,8 @@ const accountFormSchema = z.object({
     message: "check1 must be true",
   }),
   muzica: z.any().refine((value) => /\.(mp3)$/i.test(value), {
-      message: "Foramul acceptat este doar mp3",
-  
-  })
-  
+    message: "Foramul acceptat este doar mp3",
+  }),
 });
 type AccountFormValues = z.infer<typeof accountFormSchema>;
 
@@ -83,25 +81,35 @@ const Cursuri = () => {
     defaultValues,
   });
 
-  function onSubmit(data: AccountFormValues) {
-    console.log(data);
-    console.log()
-  }
-    const [fileNames, setFileNames] = useState<string[]>([]);
-    const [file, setfile] = useState<File | null>(null);
+  async function onSubmit(data: AccountFormValues) {
+    const formData = new FormData();
+    // data.muzica = file
+    if (file) {
+      formData.append("muzica", file);
+    }
+    const jsonData = JSON.stringify(data);
+    formData.append("jsonData", jsonData);
+    const response = await fetch("/api/sendMail", {
+      method: "POST",
 
-    
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setfile(file);
-        };
-        reader.readAsDataURL(file);
-      }
-      console.log(file);
-    };
+      body: formData,
+    });
+    console.log(formData);
+  }
+  const [fileNames, setFileNames] = useState<string[]>([]);
+  const [file, setfile] = useState<File | null>(null);
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setfile(file);
+      };
+      reader.readAsDataURL(file);
+    }
+    console.log(file);
+  };
   // const handleFileChange = (e) => {
   //   const file = e.target.files[0];
   //   if (file) {
@@ -326,12 +334,12 @@ const Cursuri = () => {
                   <FormLabel>Melodie</FormLabel>
                   <FormControl>
                     <Input
-                    // onChange={console.log(e)}
+                      // onChange={console.log(e)}
                       className="file:bg-secy/10 file:text-secy hover:file:bg-blue-100"
                       placeholder="Lasa-ne mesajul dorit ..."
                       type="file"
                       {...field}
-                      value={field.value ?? ''}
+                      value={field.value ?? ""}
                       accept="mp3"
                       onChange={(event) => {
                         handleFileChange(event);
