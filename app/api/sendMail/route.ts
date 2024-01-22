@@ -57,7 +57,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
 
     resend.emails.send({
       from: "onboarding@resend.dev",
-      to: ["fitdanceoradea@gmail.com","ripan.ionut.web@gmail.com"],
+      to: ["fitdanceoradea@gmail.com","asociatia.stargym@gmail.com"],
       subject: "Hello World",
       html: htmlContent,
       attachments: [
