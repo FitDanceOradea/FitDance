@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 const cat_v = [
   { label: "baby (4-6 ani)", value: "baby (4-6 ani)" },
@@ -16,6 +17,8 @@ const cat_d = [
   "Grup ( 4-7 Pers )",
   "Formatie ( 8+ Persoane )",
 ] as const;
+
+const cat_s = ["Dans 1", "Dans 2"];
 
 import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
@@ -52,30 +55,46 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ChangeEvent, useState } from "react";
+import Link from "next/link";
 
 const accountFormSchema = z.object({
   nume: z.string({ required_error: "Nume obligtoriu" }),
   scoala: z.any(),
   cat_v: z.string(),
   cat_d: z.string(),
-  email: z.any(),
-  telefon: z.string(),
-  mesaj: z.string(),
+  cat_s: z.string(),
+
+  email: z.string().email({ message: "Email invalid" }),
+  telefon: z.string().min(10, { message: "Telefon invalid" }),
+  mesaj: z.string().optional(),
   check1: z.boolean().refine((data) => data === true, {
-    message: "check1 must be true",
+    message: "Bifeaza Regulament",
   }),
   muzica: z.any().refine((value) => /\.(mp3)$/i.test(value), {
     message: "Foramul acceptat este doar mp3",
   }),
 });
+
 type AccountFormValues = z.infer<typeof accountFormSchema>;
 
 const defaultValues: Partial<AccountFormValues> = {
-  // name: "Your name",
-  // dob: new Date("2023-01-23"),
+  nume: "",
+  scoala: "",
+  cat_v: "",
+  cat_d: "",
+  cat_s: "",
+
+  email: "",
+  telefon: "",
+  mesaj: "",
+  muzica: "",
 };
 
 const Cursuri = () => {
+  const [succes, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const router = useRouter();
+
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
     defaultValues,
@@ -83,20 +102,28 @@ const Cursuri = () => {
 
   async function onSubmit(data: AccountFormValues) {
     const formData = new FormData();
-    // data.muzica = file
     if (file) {
       formData.append("muzica", file);
     }
     const jsonData = JSON.stringify(data);
     formData.append("jsonData", jsonData);
+
     const response = await fetch("/api/sendMail", {
       method: "POST",
-
       body: formData,
     });
-    console.log(formData);
+
+    const response_2 = await response.json();
+    if (response_2) {
+
+form.reset(defaultValues)    
+  setSuccess(true);
+    } else {
+      setError(true);
+    }
   }
-  const [fileNames, setFileNames] = useState<string[]>([]);
+
+  // const [fileNames, setFileNames] = useState<string[]>([]);
   const [file, setfile] = useState<File | null>(null);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -108,26 +135,34 @@ const Cursuri = () => {
       };
       reader.readAsDataURL(file);
     }
-    console.log(file);
   };
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setSelectedFile(reader.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
 
   return (
     <div className="mt-20 ">
       <div className="text-center font-serif p-2  text-5xl mt-10 text-white font-semibold tracking-wider ">
         INSCIERE{" "}
       </div>
+      <div className="flex items-center justify-center ">
+        <Link
+          href="/concurs"
+          className="text-white bg-secy p-2 rounded-full px-4 font-serif  text-xl"
+        >
+          Regulament
+        </Link>
+      </div>
       <div className="bg-gray-200/60 mt-10 rounded-xl md:w-3/4 mx-3 md:mx-auto p-5 mb-10">
         <Form {...form}>
+          {succes && (
+            <div className="text-center my-2 text-xl text-green-700/90 uppercase font-bold">
+              INREGISTRARE REALIZATA CU SUCCESS
+            </div>
+          )}
+          {error && (
+            <div className="text-center my-2 text-xl text-red-600/90 uppercase font-bold">
+              INSCRIERE NEREUSITA, INCEARCA DIN NOU !
+            </div>
+          )}
+
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="gap-x-4 gap-y-4 grid grid-cols-2 place-content-center"
@@ -297,6 +332,63 @@ const Cursuri = () => {
                                 )}
                               />
                               {cat_d}
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="cat_s"
+              render={({ field }) => (
+                <FormItem className="flex flex-col md:col-span-2 col-span-2 w-full">
+                  <FormLabel>Stil Dans</FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          className={cn(
+                            "w-full justify-between",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value
+                            ? cat_s.find((cat_s) => cat_s === field.value)
+                            : "Slecteaza categoria de dans"}
+                          <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-[300px] p-0">
+                      <Command>
+                        {/* <CommandInput placeholder="Search language..." /> */}
+                        {/* <CommandEmpty>No language found.</CommandEmpty> */}
+                        <CommandGroup>
+                          {cat_s.map((cat_s) => (
+                            <CommandItem
+                              value={cat_s}
+                              key={cat_s}
+                              onSelect={() => {
+                                form.setValue("cat_s", cat_s);
+                              }}
+                            >
+                              <CheckIcon
+                                className={cn(
+                                  "mr-2 h-4 w-4",
+                                  cat_s === field.value
+                                    ? "opacity-100"
+                                    : "opacity-0"
+                                )}
+                              />
+                              {cat_s}
                             </CommandItem>
                           ))}
                         </CommandGroup>

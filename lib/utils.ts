@@ -11,12 +11,12 @@ export const routes = [
     name: "acasa",
   },
 {
-name:"regulament",
-route:"/concurs"
+name:"cursuri",
+route:"/cursuri"
 },
   {
-    route: "/inscriere",
-    name: "inscriere",
+    route: "/dans",
+    name: "dansul-mirilor",
   },
   {
     route: "/galerie",

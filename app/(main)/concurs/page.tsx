@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Concurs = () => {
   return (
     <div className="">
@@ -10,6 +12,8 @@ const Concurs = () => {
         Ediția a XV –a – ORADEA 2024 <br />
         <br />
         <p className="text-red-500">REGULAMENT</p>
+        <Link href="/inscriere" className="text-white bg-secy p-2 rounded-full px-4 text-xl">Inscriere</Link>
+
       </div>{" "}
       <div className="bg-white text-xl border-2 border-secy shadow-md mt-10 md:m-5 md:mx-10 pt-1">
         <div className="mt-10 md:w-3/4 md:mx-auto mx-3 flex text-gray-800">

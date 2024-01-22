@@ -12,9 +12,7 @@ const Contact = () => {
           Fit Dance Oradea
         </div>
         <div className="text-2xl text-center font-semibold my-2">CONTACT</div>
-        <button className="px-8 py-4 bg-secy text-white hover:scale-90 duration-300 tracking-wider mx-auto font-semibold uppercase">
-          formular de inscriere
-        </button>
+       
         <div className="flex md:flex-row mt-20 flex-col items-center md:items-start gap-y-12 justify-around">
           <div className="flex-col flex items-center w-60">
             <Phone fill={"#007080"} size={64} className="text-secy" />
@@ -24,17 +22,20 @@ const Contact = () => {
               <a className="text-gray-600">0745 537 068</a>
             </Link>
             <Link legacyBehavior href="tel:0745537068">
+              <a className="text-gray-600">0744 020 358</a>
+            </Link>
+            <Link legacyBehavior href="tel:0745537068">
               <a className="text-gray-600">0744 780 355</a>
             </Link>
           </div>
           <div className="flex-col flex items-center w-60">
             <Mail fill={"#007080"} className="text-secy" size={64} />
             <Link
-              href="mailto:doruttd@gmail.com"
+              href="mailto:fitdanceoradea@gmail.com"
               className="font-semibold text-gray-600 text-md mx-2"
             >
               {" "}
-              puscovmaris@yahoo.com            </Link>
+              fitdanceoradea@gmail.com            </Link>
           </div>
           <div className="flex-col flex items-center w-60">
             <LocateIcon fill={"#007080"} className="text-secy" size={64} />
