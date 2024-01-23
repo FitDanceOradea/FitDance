@@ -33,6 +33,8 @@ bun dansator din concurs, cea mai buna scoala de dans – diferite alte premii.
               <li> show dance</li>
               <li> artistic dance</li>
               <li> jazz dance</li>
+              <li> Lyric</li>
+  <li>Neoclasic </li>
             </ul>{" "}
             <br />
           </div>

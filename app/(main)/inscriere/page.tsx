@@ -18,7 +18,16 @@ const cat_d = [
   "Formatie ( 8+ Persoane )",
 ] as const;
 
-const cat_s = ["Dans 1", "Dans 2"];
+const cat_s = [
+  "Balet Dance",
+  "Dans Contemporan",
+  "Dans de Caracter",
+  "Artistic Dance",
+  "Jazz dans",
+  "Show Dance",
+  "Lyric",
+  "Neoclasic "
+];
 
 import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
@@ -65,7 +74,7 @@ const accountFormSchema = z.object({
   cat_s: z.string(),
 
   email: z.string().email({ message: "Email invalid" }),
-  telefon: z.string().min(10, { message: "Telefon invalid" }),
+  telefon: z.string().min(8, { message: "Telefon invalid" }),
   mesaj: z.string().optional(),
   check1: z.boolean().refine((data) => data === true, {
     message: "Bifeaza Regulament",
@@ -88,6 +97,7 @@ const defaultValues: Partial<AccountFormValues> = {
   telefon: "",
   mesaj: "",
   muzica: "",
+  check1:false
 };
 
 const Cursuri = () => {
@@ -117,6 +127,8 @@ const Cursuri = () => {
     if (response_2) {
 
 form.reset(defaultValues)    
+
+
   setSuccess(true);
     } else {
       setError(true);

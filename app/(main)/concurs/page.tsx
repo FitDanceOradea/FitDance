@@ -72,7 +72,7 @@ const Concurs = () => {
             <li>
               {" "}
               <span className="font-bold uppercase">duo: </span>
-              All styles (open dance), acro dance, dans contemporan, dans
+              All styles (open dance), acro dance, dans contemporan, dans, Lyric, Neoclasic
               clasic, dans de caracter, artistic dance (se lucrează cu un obiect
               sau decor), jaz dance, hip – hop, street dance, majorete.
             </li>

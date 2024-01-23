@@ -29,7 +29,9 @@ const Galerie = () => {
         {/* <div className="grid grid-cols-1 md:grid-cols-2 xm:grid-cols-3 gap-4 items-center place-items-center "> */}
         <div
           className=" "
-        ></div>
+        >
+          
+        </div>
         <div className="grid grid-cols-2">
           <div className="">
             {" "}
@@ -38,7 +40,7 @@ const Galerie = () => {
                 <Image
                   src={`/${item}`}
                   height={500}
-                  width={800}
+                  width={1000}
                   alt={item}
                 ></Image>
               </div>
@@ -51,7 +53,7 @@ const Galerie = () => {
                 <Image
                   src={`/${item}`}
                   height={500}
-                  width={800}
+                  width={1000}
                   alt={item}
                 ></Image>
               </div>

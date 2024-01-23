@@ -10,31 +10,33 @@ const stiluri_dans = [
   "Artistic Dance",
   "Jazz dans",
   "Show Dance",
+  "Lyric",
+  "Neoclasic "
 ];
 
 const texts_2 = [
   {
-    number: "11",
-    text: "Ani de experienta",
-    plus: true,
+    number: "17",
+    text: "Ani - Experienta Club",
+    plus: false,
   },
-  { number: "6", plus: false, text: "Stiluri de dans" },
-  { number: "150", plus: true, text: "Premii obtinute" },
+  { number: "7", plus: false, text: "Stiluri de dans" },
+  { number: "300", plus: true, text: "Premii obtinute" },
   { number: "10", plus: true, text: "Evenimente anuale" },
   { number: "6", plus: false, text: "Grupe de Varsta" },
-  {},
+  { number: "25", plus: true, text: "Ani - Experienta Profesori" },
 ];
 
 // Discipline: dans clasic( balet), dans contemporan,  dans de caracter,  artistic dance,  jazz dans, show dance
 export default function Home() {
   return (
     <div className="">
-      <div className="text-center font-serif p-2 text-5xl mt-10 text-white font-semibold tracking-wider ">
+      <div className="text-center font-serif p-2 text-5xl mt-10  text-white font-semibold tracking-wider ">
         FIT DANCE ORADEA
       </div>
 
       {/* // SECTIUNE 1 */}
-      <div className="bg-white md:mt-30 mt-10 py-10 px-5 ">
+      <div className="bg-white md:mt-30 mt-10  py-10 px-5 ">
         <div className="flex flex-col bg-gray-100 text-white items-center shadow-2xl shadow-secy	rounded-lg  md:flex-row">
           <Image
             className="object-cover rounded-t-lg h-112 md:h-auto md:w-1/3 w-full md:rounded-none md:rounded-s-lg"
@@ -79,10 +81,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* // Sectiune 2  */}
-      <div className="md:mt-20 mt-10 md:mb-20 mb-10 mx-10">
+        <div className="bg-white"><div className="md:mt-20 mt-10 bg-white md:mb-20 mb-10 mx-10">
         <div className="flex items-center justify-center flex-wrap gap-y-8 md:gap-x-28 gap-x-8">
           {texts_2.map((item, index) => (
             <div key={index} className="flex flex-none flex-col items-center">
@@ -96,7 +95,12 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </div></div>
+      
       </div>
+
+      {/* // Sectiune 2  */}
+      
     </div>
   );
 }
