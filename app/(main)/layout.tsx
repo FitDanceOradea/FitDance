@@ -28,8 +28,7 @@ export default function RootLayout({
         ></link>
       </head>
       <body className={inter.className}>
-        <div className="">
-          <div className="-translate-y-[40rem]  absolute top-0 -z-10">
+          <div className="md:-translate-y-[30rem]  absolute top-0 -z-10">
             <Image
               className="hidden md:block "
               alt="bg"
@@ -38,24 +37,19 @@ export default function RootLayout({
               src="/bg.jpeg"
             ></Image>
             <Image
-              className="md:hidden h-3/4 "
+              className="md:hidden block"
               alt="bg"
-              width={1200}
+              width={700}
               height={500}
               src="/bg.jpeg"
             ></Image>
           </div>
-          <div className="grow">
-            {" "}
+          
             <Navbar />
             {children}
-          </div>
 
-          <div className="">
             {" "}
             <Footer />
-          </div>
-        </div>
       </body>
     </html>
   );
