@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -20,15 +22,17 @@ const texts_2 = [
     text: "Ani - Experienta Club",
     plus: false,
   },
-  { number: "7", plus: false, text: "Stiluri de dans" },
+  { number: "8", plus: false, text: "Stiluri de dans" },
   { number: "300", plus: true, text: "Premii obtinute" },
   { number: "10", plus: true, text: "Evenimente anuale" },
   { number: "6", plus: false, text: "Grupe de Varsta" },
   { number: "25", plus: true, text: "Ani - Experienta Profesori" },
 ];
 
+
 // Discipline: dans clasic( balet), dans contemporan,  dans de caracter,  artistic dance,  jazz dans, show dance
 export default function Home() {
+  
   return (
     <div className="">
       <div className="text-center font-serif p-2 text-5xl mt-10  text-white font-semibold tracking-wider ">
@@ -81,8 +85,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="bg-white"><div className="md:mt-20 mt-10 bg-white md:mb-20 mb-10 mx-10">
-        <div className="flex items-center justify-center flex-wrap gap-y-8 md:gap-x-28 gap-x-8">
+        <div className="bg-white"><div className="md:mt-20 mt-10  bg-white md:mb-20 mb-10 mx-10">
+        <div className="flex items-center justify-center flex-wrap gap-y-8 mt-32 md:gap-x-28 gap-x-8">
           {texts_2.map((item, index) => (
             <div key={index} className="flex flex-none flex-col items-center">
               <div className="flex text-4xl font-semibold md:text-5xl xl:text-6xl">

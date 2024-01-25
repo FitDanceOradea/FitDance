@@ -3,10 +3,49 @@ import { cn, routes } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Facebook, Instagram } from "lucide-react";
-import { useState } from "react";
+import {
+  Facebook,
+  Instagram,
+  Music,
+  Music2,
+  Music2Icon,
+  Music4,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [music, setMusic] = useState(false); // Start with music paused
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (process.browser) {
+      const audioElement = new Audio('/music.mp3'); // Replace with the actual file path
+      setAudio(audioElement);
+    }
+  }, []); // Empty dependency array to run the effect only once on mount
+
+  const startMusic = () => {
+    if (audio) {
+      audio.play().catch(error => {
+        console.error('Error starting audio:', error);
+      });
+      setMusic(true);
+    }
+  };
+
+  const toggleMusic = () => {
+    if (audio) {
+      if (music) {
+        audio.pause();
+      } else {
+        audio.play().catch(error => {
+          console.error('Error starting audio:', error);
+        });
+      }
+      setMusic(!music);
+    }
+  };
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname();
@@ -18,6 +57,9 @@ const Navbar = () => {
         <div className="block">
           <Image src="/logo_no_bg.png" width={100} height={100} alt={""} />
         </div>
+        <button onClick={toggleMusic}>
+          <Music4 className={cn(!music?"text-secy":"text-red-500")} size={40} />
+        </button>
         <div className="flex justify-center items-center gap-x-6">
           {routes.map((item, index) => (
             <div
@@ -33,13 +75,19 @@ const Navbar = () => {
           ))}
         </div>
         <div className="flex items-center  text-secy gap-x-4 mr-6">
-          <Link href="facebook" className="bg-white/10 p-2 rounded-full">
-            {" "}
-            <Facebook size={24} />
-          </Link>
-          <Link href="insta" className="bg-white/10 p-2 rounded-full">
-            <Instagram size={24} />
-          </Link>
+           <Link
+                  href="https://www.facebook.com/p/Liza-Igna-Dansul-Mirilor-100063581464465/"
+                  className="bg-white/10 p-2 rounded-full"
+                >
+                  {" "}
+                  <Facebook size={24} />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/liza_igna_dansul_mirilor?igsh=cmFnZWZpZmUxeGh4&utm_source=qr"
+                  className="bg-white/10 p-2 rounded-full"
+                >
+                  <Instagram size={24} />
+                </Link>
         </div>
       </div>
       <div>
@@ -75,6 +123,9 @@ const Navbar = () => {
         </div>
 
         {/* Mobile menu */}
+        <button className="ml-5 md:hidden" onClick={toggleMusic}>
+          <Music4 className="text-secy" size={36} />
+        </button>
         <div
           className={cn(
             "absolute z-10 h-full w-full border-t bg-[#282C35] border-secy/5 p-5 transition-transform transform", // Common classes
@@ -86,6 +137,7 @@ const Navbar = () => {
           )}
         >
           {/* Menu content */}
+
           <nav>
             <div className="flex flex-col text-xl justify-center gap-y-4 items-center gap-x-6">
               {routes.map((item, index) => (
@@ -97,15 +149,23 @@ const Navbar = () => {
                   )}
                   key={index}
                 >
-                  <Link onClick={() => setIsMenuOpen(false)} href={item.route}>{item.name.toUpperCase()} </Link>
+                  <Link onClick={() => setIsMenuOpen(false)} href={item.route}>
+                    {item.name.toUpperCase()}{" "}
+                  </Link>
                 </div>
               ))}
               <div className="flex items-center  text-secy gap-x-4 ">
-                <Link href="facebook" className="bg-white/10 p-2 rounded-full">
+                <Link
+                  href="https://www.facebook.com/p/Liza-Igna-Dansul-Mirilor-100063581464465/"
+                  className="bg-white/10 p-2 rounded-full"
+                >
                   {" "}
                   <Facebook size={24} />
                 </Link>
-                <Link href="insta" className="bg-white/10 p-2 rounded-full">
+                <Link
+                  href="https://www.instagram.com/liza_igna_dansul_mirilor?igsh=cmFnZWZpZmUxeGh4&utm_source=qr"
+                  className="bg-white/10 p-2 rounded-full"
+                >
                   <Instagram size={24} />
                 </Link>
               </div>

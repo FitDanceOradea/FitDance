@@ -1,3 +1,5 @@
+import React, { useEffect } from 'react';
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
@@ -17,6 +19,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  
   return (
     <html lang="en">
       <head>
@@ -27,7 +30,8 @@ export default function RootLayout({
           rel="stylesheet"
         ></link>
       </head>
-      <body className={inter.className}>
+
+         <body className={inter.className}>
           <div className="md:-translate-y-[30rem]  absolute top-0 -z-10">
             <Image
               className="hidden md:block "
@@ -51,6 +55,8 @@ export default function RootLayout({
             {" "}
             <Footer />
       </body>
+      
+
     </html>
   );
 }
