@@ -9,9 +9,9 @@ const Concurs = () => {
       </div>{" "}
       <div className="bg-white text-xl border-2 border-secy shadow-md mt-10 md:m-5 md:mx-10 pt-1">
         <div className="mt-10 md:w-3/4 md:mx-auto mx-3 flex text-gray-800">
-          <span className="text-secy  font-semibold text-md ">1.</span>
-          <p className="">
-            Avand profesori, cu peste 20 de ani de experienta în domeniu, clubul
+          <span className="text-secy  font-semibold text-md ">1. </span>
+          <p className="ml-2">
+            {" "}Avand profesori, cu peste 20 de ani de experienta în domeniu, clubul
             a participat la diferite concursuri nationale si internationale unde
             am obtinut numeroase clasari pe podium la formatii si solouri. Dar
             si alte premii pentru cea mai buna coreografie, cel mai bun dansator
@@ -32,8 +32,8 @@ const Concurs = () => {
               <li> show dance</li>
               <li> artistic dance</li>
               <li> jazz dance</li>
-              <li> Lyric</li>
-              <li>Neoclasic </li>
+              <li> lyric</li>
+              <li>neoclasic </li>
             </ul>{" "}
             <br />
           </div>
@@ -49,10 +49,10 @@ const Concurs = () => {
  <br /> 
             <ul className="list-disc ml-8">
               {" "}
-              <li> copii pana la 4 – 5 ani marti si joi 17,30-18,30</li>
+              <li> copii pana la 4 – 5 ani marti si joi 17:30-18:30</li>
               <li>
                 {" "}
-                copii peste 5 – 6 ani luni, miercuri si vineri 18,00-19,00
+                copii peste 6 ani luni, miercuri si vineri  17:30-18:30
               </li>
               <br />
             </ul>{" "}
@@ -61,7 +61,7 @@ const Concurs = () => {
         <div className=" md:w-3/4 md:mx-auto mx-3 flex  text-gray-800">
           <div className=" flex">
             {" "}
-            <span className="text-secy  font-semibold text-md">4. </span>
+            <span className="text-secy mr-2 font-semibold text-md">4. </span>
           </div>{" "}
           Grupele de performanta sunt impartite pe varste si participa la
           concursuri interne si internationale. Acestea pe langa orele de dans

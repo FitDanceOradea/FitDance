@@ -9,14 +9,11 @@ const photos = [
   "6.jpg",
   "7.jpg",
   "8.jpg",
-  "9.jpg",
   "10.jpg",
   "11.jpg",
   "13.jpg",
   "24.jpeg",
-
-
-
+  "20.jpeg",
 
 ];
 const photos2 = [
@@ -24,17 +21,14 @@ const photos2 = [
   "15.jpg",
   "16.jpg",
   "12.jpg",
+  "9.jpg",
 
-    "17.jpeg",
-    "18.jpeg",
-    "19.jpeg",
-    "20.jpeg",
-    "21.jpeg",
-    "22.jpeg",
-    "23.jpeg",
-    "25.jpeg",
-
-
+  "17.jpeg",
+  "18.jpeg",
+  "19.jpeg",
+  "21.jpeg",
+  "22.jpeg",
+  "25.jpeg",
 ];
 
 const DansMiri = () => {
@@ -46,7 +40,7 @@ const DansMiri = () => {
       <div className="text-secy font-serif text-center font-semibold tracking-wider  text-3xl">
         ~ Magie in pasi de dans ~
       </div>
-      <div className="text-gray-800 mt-10 md:mt-0 md:text-gray-200  font-serif text-center font-semibold tracking-wider  text-xl">
+      <div className="text-gray-800 mt-28 md:mt-0 md:text-gray-200  font-serif text-center font-semibold tracking-wider  text-xl">
         ~ Oferim mirilor noștri atat coregrafia personalizata de la dansul
         mirilor , cât și lecții de dans, pentru a învața mai multe stiluri.~
       </div>
@@ -58,7 +52,7 @@ const DansMiri = () => {
         <div className="">
           {" "}
           {photos.map((item, index) => (
-            <div className="border-secy border -mb-[1.4px]" key={index}>
+            <div className="border-secy border -mb-[0.97rem] md:-mb-5 xl:-mb-6" key={index}>
               <Image
                 src={`/dansmiri/${item}`}
                 height={500}

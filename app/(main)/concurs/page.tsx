@@ -74,14 +74,16 @@ const Concurs = () => {
               <span className="font-bold uppercase">duo: </span>
               All styles (open dance), acro dance, dans contemporan, dans, Lyric, Neoclasic
               clasic, dans de caracter, artistic dance (se lucrează cu un obiect
-              sau decor), jaz dance, hip – hop, street dance, majorete.
+              sau decor), jaz dance, hip – hop, street dance, majorete, lyric, neoclasic
+.
             </li>
             <li>
               {" "}
               <span className="font-bold uppercase">trio: </span>
               All styles (open dance), acro dance, dans contemporan, dans
               clasic, dans de caracter, artistic dance (se lucrează cu un obiect
-              sau decor), jaz dance, hip – hop, street dance, majorete.
+              sau decor), jaz dance, hip – hop, street dance, majorete,lyric, neoclasic
+.
             </li>
             <li>
               {" "}
@@ -90,7 +92,8 @@ const Concurs = () => {
               </span>
               All styles (open dance), acro dance, dans contemporan, dans
               clasic, dans de caracter, artistic dance (se lucrează cu un obiect
-              sau decor), jaz dance, hip – hop, street dance, majorete.
+              sau decor), jaz dance, hip – hop, street dance, majorete, lyric, neoclasic
+.
             </li>
             <li>
               {" "}
@@ -99,7 +102,8 @@ const Concurs = () => {
               </span>
               All styles (open dance), acro dance, dans contemporan, dans
               clasic, dans de caracter, artistic dance (se lucrează cu un obiect
-              sau decor), jaz dance, hip – hop, street dance, majorete.
+              sau decor), jaz dance, hip – hop, street dance, majorete, lyric, neoclasic
+.
             </li>
             <br />
           </ul>
