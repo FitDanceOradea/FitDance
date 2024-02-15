@@ -26,7 +26,12 @@ const cat_s = [
   "Jazz dans",
   "Show Dance",
   "Lyric",
-  "Neoclasic "
+  "Neoclasic ",
+  "All styles (Open dance)",
+  "Acro dance",
+  "Hit Hop",
+  "Majorete",
+  "Street dance"
 ];
 import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
