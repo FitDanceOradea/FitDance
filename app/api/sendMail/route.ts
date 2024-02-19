@@ -55,7 +55,7 @@ console.log(process.env.EMAIL)
     const buffer = await muzica.arrayBuffer();
     // Further processing with buffer
 
-    resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: ["fitdanceoradea@gmail.com","asociatia.stargym@gmail.com"],
       subject: "Hello World",
@@ -67,7 +67,9 @@ console.log(process.env.EMAIL)
         },
       ],
     });
-    
+    if (error) {
+    return res.status(400).json(error);
+  }
     return new NextResponse(
       JSON.stringify({ message: "Success" }),
       {
