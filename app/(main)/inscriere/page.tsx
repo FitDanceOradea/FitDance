@@ -133,11 +133,12 @@ const Cursuri = () => {
 form.reset(defaultValues)    
 
 
+setSuccess(true);
 setTimeout(function() {
-  setSuccess(true);
+  setSuccess(false);
 }, 2000);
 
-setSuccess(false);    } else {
+    } else {
       setError(true);
     }
   }
