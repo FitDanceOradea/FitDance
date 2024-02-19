@@ -14,7 +14,7 @@ interface EmailTemplateProps {
   mesaj: any;
 }
 const resend = new Resend(process.env.EMAIL);
-
+console.log(process.env.EMAIL) 
 export async function POST(req: NextRequest, res: NextApiResponse) {
   let data = await req.formData();
 
