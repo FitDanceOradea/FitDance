@@ -134,9 +134,10 @@ form.reset(defaultValues)
 
 
 setSuccess(true);
+      
 setTimeout(function() {
   setSuccess(false);
-}, 2000);
+}, 3500);
 
     } else {
       setError(true);
