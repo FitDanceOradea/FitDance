@@ -14,9 +14,9 @@ interface EmailTemplateProps {
   mesaj: any;
 }
 const resend = new Resend(process.env.EMAIL);
-
 export async function POST(req: NextRequest, res: NextApiResponse) {
   let data = await req.formData();
+console.log(process.env.EMAIL) 
 
   const jsonDataString = data.get("jsonData") as string;
   const form = JSON.parse(jsonDataString);
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     const buffer = await muzica.arrayBuffer();
     // Further processing with buffer
 
-    resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: ["fitdanceoradea@gmail.com","asociatia.stargym@gmail.com"],
       subject: "Hello World",
@@ -67,7 +67,9 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
         },
       ],
     });
-    
+    if (error) {
+    return res.status(400).json(error);
+  }
     return new NextResponse(
       JSON.stringify({ message: "Success" }),
       {
