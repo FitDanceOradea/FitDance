@@ -132,9 +132,14 @@ const Cursuri = () => {
 
 form.reset(defaultValues)    
 
-
+setTimeout(function() {
   setSuccess(true);
-    } else {
+}, 2000);
+
+setSuccess(false);
+
+
+} else {
       setError(true);
     }
   }
@@ -168,7 +173,7 @@ form.reset(defaultValues)
       </div>
       <div className="bg-gray-200/60 mt-10 rounded-xl md:w-3/4 mx-3 md:mx-auto p-5 mb-10">
         <Form {...form}>
-          {succes && (
+          {succes  &&(
             <div className="text-center my-2 text-xl text-green-700/90 uppercase font-bold">
               INREGISTRARE REALIZATA CU SUCCESS
             </div>
