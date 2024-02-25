@@ -165,7 +165,7 @@ catch (error){
   return (
     <div className="mt-20 ">
       <div className="text-center font-serif p-2  text-5xl mt-10 text-white font-semibold tracking-wider ">
-        INSRCIERE{" "}
+        INSCRIERE{" "}
       </div>
       <div className="flex items-center justify-center ">
         <Link
