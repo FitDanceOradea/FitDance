@@ -32,7 +32,7 @@ export default function RootLayout({
       </head>
 
          <body className={inter.className}>
-          <div className="md:-translate-y-[30rem]  absolute top-0 -z-10">
+          <div className="flex flex-col">  <div className="md:-translate-y-[30rem]  absolute top-0 -z-10">
             <Image
               className="hidden md:block "
               alt="bg"
@@ -48,12 +48,13 @@ export default function RootLayout({
               src="/bg.jpeg"
             ></Image>
           </div>
-          
-            <Navbar />
-            {children}
+          <div className="grow"> <Navbar />
+            {children}</div>
+           
 
             {" "}
-            <Footer />
+            <Footer /></div>
+        
       </body>
       
 
