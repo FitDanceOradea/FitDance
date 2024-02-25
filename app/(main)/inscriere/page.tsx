@@ -122,17 +122,15 @@ const Cursuri = () => {
     const jsonData = JSON.stringify(data);
     formData.append("jsonData", jsonData);
 
+   try {
     const response = await fetch("/api/sendMail", {
       method: "POST",
       body: formData,
     });
-
     const response_2 = await response.json();
     if (response_2) {
 
 form.reset(defaultValues)    
-
-
 setSuccess(true);
       
 setTimeout(function() {
@@ -142,6 +140,12 @@ setTimeout(function() {
     } else {
       setError(true);
     }
+   } 
+catch (error){
+  setError(true);
+  console.log(error)
+}
+   
   }
 
   // const [fileNames, setFileNames] = useState<string[]>([]);
@@ -161,7 +165,7 @@ setTimeout(function() {
   return (
     <div className="mt-20 ">
       <div className="text-center font-serif p-2  text-5xl mt-10 text-white font-semibold tracking-wider ">
-        INSCIERE{" "}
+        INSRCIERE{" "}
       </div>
       <div className="flex items-center justify-center ">
         <Link
@@ -173,17 +177,7 @@ setTimeout(function() {
       </div>
       <div className="bg-gray-200/60 mt-10 rounded-xl md:w-3/4 mx-3 md:mx-auto p-5 mb-10">
         <Form {...form}>
-          {succes && (
-            <div className="text-center my-2 text-xl text-green-700/90 uppercase font-bold">
-              INREGISTRARE REALIZATA CU SUCCESS
-            </div>
-          )}
-          {error && (
-            <div className="text-center my-2 text-xl text-red-600/90 uppercase font-bold">
-              INSCRIERE NEREUSITA, INCEARCA DIN NOU !
-            </div>
-          )}
-
+         
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="gap-x-4 gap-y-4 grid grid-cols-2 place-content-center"
@@ -486,6 +480,18 @@ setTimeout(function() {
                 </FormItem>
               )}
             />
+            <div className="cols-2 col-span-2 ">  {succes  &&(
+            <div className="text-center cols-2 col-span-2 my-2 text-xl text-green-700/90 uppercase font-bold">
+              INREGISTRARE REALIZATA CU SUCCESS
+            </div>
+          )}
+          {error && (
+            <div className="text-center cols-2 col-span-2  my-2 text-xl text-red-600/90 uppercase font-bold">
+              INSCRIERE NEREUSITA, INCEARCA DIN NOU !
+            </div>
+          )}</div>
+           
+
             <Button
               className="col-span-2 rounded-full bg-secy uppercase"
               type="submit"
