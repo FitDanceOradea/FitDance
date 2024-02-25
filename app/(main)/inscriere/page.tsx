@@ -438,7 +438,7 @@ catch (error){
               name="muzica"
               render={({ field }) => (
                 <FormItem className="col-span-2 ">
-                  <FormLabel>Melodie ( Maxim 5MB )</FormLabel>
+                  <FormLabel>Melodie ( Maxim 4MB )</FormLabel>
                   <FormControl>
                     <Input
                       // onChange={console.log(e)}
