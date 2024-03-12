@@ -5,7 +5,7 @@ module.exports = {
   serverRuntimeConfig: {
     // Increase the maximum payload size limit to 10MB
     bodyParser: {
-      sizeLimit: '30mb',
+      sizeLimit: '35mb',
     },
   },
 };
