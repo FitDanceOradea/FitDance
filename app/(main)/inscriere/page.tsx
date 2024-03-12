@@ -126,6 +126,9 @@ const Cursuri = () => {
     const response = await fetch("/api/sendMail", {
       method: "POST",
       body: formData,
+      headers: {
+        ...formData.get
+    },
     });
     const response_2 = await response.json();
     if (response_2) {
