@@ -87,3 +87,10 @@ export async function POST(req, res) {
     return new NextResponse(`Internal error: ${error.message}`, { status: 500 });
   }
 }
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '20mb',
+    },
+  },
+};
