@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { Resend } from "resend";
-
+import multer from "multer";
+import aws from "aws-sdk";
+const upload = multer();
 
 const s3Client = new S3Client({
   region: process.env.LOC,
@@ -9,6 +11,11 @@ const s3Client = new S3Client({
     accessKeyId: process.env.AK,
     secretAccessKey: process.env.SAK,
   },
+});
+const s3 = new aws.S3({
+  accessKeyId: process.env.AK,
+  secretAccessKey: process.env.SAK,
+  region: process.env.LOC,
 });
 
 async function uploadFileToS3(fileBuffer, fileName) {
@@ -41,9 +48,34 @@ export async function POST(req, res) {
 
     const muzica = formData.get("muzica");
     const buffer = await muzica.arrayBuffer();
-    const fileName = `${scoala}${nume}${muzica.name}`;
-    await uploadFileToS3(buffer, fileName);
-    const fileUrl = `https://${process.env.NAME}.s3.${process.env.LOC}.amazonaws.com/${fileName}`;
+    const fileName = `${scoala}${nume}${muzica.name}`;   
+     const fileUrl = `https://${process.env.NAME}.s3.${process.env.LOC}.amazonaws.com/${fileName}`;
+
+    // await uploadFileToS3(buffer, fileName);
+    upload.single("muzica")(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({ message: "Error uploading file" });
+      }
+      const Sendbuffer = Buffer.from(buffer);
+
+      console.log(req.muzica)
+      // Upload the file to AWS S3
+      const params = {
+        Bucket: process.env.NAME,
+        Key: `${fileName}`, // Specify the key (filename) for the file in S3
+        Body: Sendbuffer, // Use the file buffer as the Body of the request
+        ContentType:"audio/mpeg",
+        // Specify the content type of the file
+      };
+
+      var options = {partSize: 3 * 1024 * 1024, queueSize: 6};
+
+      s3.upload(params, options, function(err, data) {
+        // console.log(err, data);
+      });    
+      // Return the file URL or any other relevant information
+      // res.status(200).json({ fileUrl: data.Location });
+    });
 
     const htmlContent = `
         <div>
@@ -61,12 +93,12 @@ export async function POST(req, res) {
         </div>
       `;
 
-    // const { data, error } = await resendClient.emails.send({
-    //   from: "onboarding@resend.dev",
-    //   to: ["fitdanceoradea@gmail.com", "asociatia.stargym@gmail.com"],
-    //   subject: "Detalii Inscriere",
-    //   html: htmlContent,
-    // });
+    const { data, error } = await resendClient.emails.send({
+      from: "onboarding@resend.dev",
+      to: ["fitdanceoradea@gmail.com", "asociatia.stargym@gmail.com"],
+      subject: "Detalii Inscriere",
+      html: htmlContent,
+    });
 
     if (error) {
       throw new Error(`Failed to send email: ${error.message}`);
