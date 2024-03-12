@@ -443,7 +443,7 @@ catch (error){
               name="muzica"
               render={({ field }) => (
                 <FormItem className="col-span-2 ">
-                  <FormLabel>Melodie ( Maxim 5MB )</FormLabel>
+                  <FormLabel>Melodie</FormLabel>
                   <FormControl>
                     <Input
                       // onChange={console.log(e)}
@@ -485,6 +485,18 @@ catch (error){
                 </FormItem>
               )}
             />
+            <div className="cols-2 col-span-2 ">  {succes  &&(
+            <div className="text-center cols-2 col-span-2 my-2 text-xl text-green-700/90 uppercase font-bold">
+              INREGISTRARE REALIZATA CU SUCCESS
+            </div>
+          )}
+          {error && (
+            <div className="text-center cols-2 col-span-2  my-2 text-xl text-red-600/90 uppercase font-bold">
+              INSCRIERE NEREUSITA, INCEARCA DIN NOU !
+            </div>
+          )}</div>
+           
+
             <div className="cols-2 col-span-2 ">  {succes  &&(
             <div className="text-center cols-2 col-span-2 my-2 text-xl text-green-700/90 uppercase font-bold">
               INREGISTRARE REALIZATA CU SUCCESS
