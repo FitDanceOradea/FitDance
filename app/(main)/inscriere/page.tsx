@@ -143,7 +143,12 @@ setTimeout(function() {
    } 
 catch (error){
   setError(true);
+
+  setTimeout(function() {
+    setError(false);
+  }, 3500);
   console.log(error)
+  
 }
    
   }
@@ -438,7 +443,7 @@ catch (error){
               name="muzica"
               render={({ field }) => (
                 <FormItem className="col-span-2 ">
-                  <FormLabel>Melodie</FormLabel>
+                  <FormLabel>Melodie ( Maxim 5MB )</FormLabel>
                   <FormControl>
                     <Input
                       // onChange={console.log(e)}
