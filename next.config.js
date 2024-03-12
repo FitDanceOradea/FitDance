@@ -2,10 +2,7 @@
 const nextConfig = {}
 
 module.exports = {
-  serverRuntimeConfig: {
-    // Increase the maximum payload size limit to 10MB
-    bodyParser: {
-      sizeLimit: '35mb',
-    },
-  },
-};
+    serverActions: {
+        bodySizeLimit: '20mb' // Set desired value here
+    }
+}
