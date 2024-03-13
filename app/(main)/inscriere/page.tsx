@@ -123,7 +123,7 @@ const Cursuri = () => {
     formData.append("jsonData", jsonData);
 
    try {
-    const response = await fetch("/api/sendMail", {
+    const response = await fetch("https://backend-fitdance-1.onrender.com/upload", {
       method: "POST",
       body: formData,
       headers: {
